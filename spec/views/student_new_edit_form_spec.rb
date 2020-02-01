@@ -15,13 +15,13 @@ RSpec.describe "create and edit form" do
       student = Student.new
       assign(:student, student)
       render :template => "students/new.html.erb"
-      expect(rendered).to render_template(:partial => "students/_form")
+      expect(rendered).to render_template(:partial => "students/_student_form")
     end
 
     it "displays the create form from the partial" do
       student = Student.new
       assign(:student, student)
-      render :partial => "students/form.html.erb"
+      render :partial => "students/student_form.html.erb"
       expect(rendered).to match /Create Student/
     end
   end
@@ -41,13 +41,13 @@ RSpec.describe "create and edit form" do
       student = Student.create(name: 'Bobby', hometown: Faker::Address.city, birthday: Faker::Date.between(from: 25.years.ago, to: 18.years.ago))
       assign(:student, student)
       render :template => "students/edit.html.erb"
-      expect(rendered).to render_template(:partial => "students/_form")
+      expect(rendered).to render_template(:partial => "students/_student_form")
     end
 
     it "displays the edit form from the partial" do
       student = Student.create(name: 'Bobby', hometown: Faker::Address.city, birthday: Faker::Date.between(from: 25.years.ago, to: 18.years.ago))
       assign(:student, student)
-      render :partial => "students/form.html.erb"
+      render :partial => "students/student_form.html.erb"
       expect(rendered).to match /Update Student/
     end
   end
